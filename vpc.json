@@ -1,0 +1,32 @@
+"VPC":{  
+ "Type":"AWS::EC2::VPC",
+ "Properties":{  
+    "CidrBlock":"10.10.0.0/16",
+    "Tags":[  
+       {  
+          "Key":"Name",
+          "Value":{  
+             "Fn::Join":[  
+                "",
+                [  
+                   {  
+                      "Ref":"Environment"
+                   },
+                   "-VPC"
+                ]
+             ]
+          }
+       },
+       {  
+          "Key":"Environment",
+          "Value":{  
+             "Fn::FindInMap":[  
+                "Constants",
+                "Tags",
+                "environment"
+             ]
+          }
+       }
+    ]
+ }
+}
